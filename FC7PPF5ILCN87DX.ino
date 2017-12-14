@@ -1,7 +1,7 @@
-//
+// 梳理和增加中文注释用
 // Source code for application to transmit image from ov7670 to PC via USB
 // By Siarhei Charkes in 2015
-// http://privateblog.info 
+// http://privateblog.info
 //
 
 #include <stdint.h>
@@ -276,7 +276,7 @@
 #define AWBC12            0x5e  /* AWB Control 12 */
 #define REG_GFI           0x69  /* Fix gain control */
 #define GGAIN           0x6a  /* G Channel AWB Gain */
-#define DBLV            0x6b  
+#define DBLV            0x6b
 #define AWBCTR3           0x6c  /* AWB Control 3 */
 #define AWBCTR2           0x6d  /* AWB Control 2 */
 #define AWBCTR1           0x6e  /* AWB Control 1 */
@@ -536,7 +536,7 @@ void camInit(void){
 
 void arduinoUnoInut(void) {
   cli();//disable interrupts
-  
+
     /* Setup the 8mhz PWM clock
   * This will be on pin 11*/
   DDRB |= (1 << 3);//pin 11
@@ -547,11 +547,11 @@ void arduinoUnoInut(void) {
   DDRC &= ~15;//low d0-d3 camera
   DDRD &= ~252;//d7-d4 and interrupt pins
   _delay_ms(3000);
-  
+
     //set up twi for 100khz
   TWSR &= ~3;//disable prescaler for TWI
   TWBR = 72;//set to 100khz
-  
+
     //enable serial
   UBRR0H = 0;
   UBRR0L = 1;//0 = 2M baud rate. 1 = 1M baud. 3 = 0.5M. 7 = 250k 207 is 9600 baud rate.
