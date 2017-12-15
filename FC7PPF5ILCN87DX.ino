@@ -535,12 +535,18 @@ void camInit(void){
 }
 
 void arduinoUnoInut(void) {
-  cli();//disable interrupts
+  cli();//初始化之前进行中断处理
 
-    /* Setup the 8mhz PWM clock
-  * This will be on pin 11*/
-  DDRB |= (1 << 3);//pin 11
-  ASSR &= ~(_BV(EXCLK) | _BV(AS2));
+  /**
+    *
+    *根据Arduino手册得知，在Arduino UNO中对应DDR如下：
+    *B (digital pin 8 to 13)
+    *C (analog input pins)
+    *D (digital pins 0 to 7)
+    *同时Arduino的引脚默认是输入
+  **/
+  DDRB |= (1 << 3);//将pin 11设置为输出
+  ASSR &= ~(_BV(EXCLK) | _BV(AS2));//_BV()是把1左移N位的函数，_BV(7)相当于(1<<7)，同时按位取反，将ASSR的标记全部取消
   TCCR2A = (1 << COM2A0) | (1 << WGM21) | (1 << WGM20);
   TCCR2B = (1 << WGM22) | (1 << CS20);
   OCR2A = 0;//(F_CPU)/(2*(X+1))
