@@ -6,6 +6,7 @@ wget https://github.com/polaco1782/raspberry-qemu/blob/master/linux-arm.patch
 git clone git://github.com/raspberrypi/linux.git --branch rpi-4.9.y --single-branch
 git clone git://github.com/raspberrypi/tools.git
 cd linux
+diff -ur ../linux-arm.patch ../linux-arm.patch > ../linux-arm.patch
 patch -p1 < ../linux-arm.patch
 
 make ARCH=arm versatile_defconfig
