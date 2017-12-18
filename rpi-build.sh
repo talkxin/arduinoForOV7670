@@ -1,9 +1,9 @@
-TOOLCHAIN=$(pwd)/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian/bin/arm-linux-gnueabihf
+TOOLCHAIN=../tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian/bin/arm-linux-gnueabihf
 rm -rf kernel-qemu
 mkdir kernel-qemu
 cd kernel-qemu
 wget https://github.com/polaco1782/raspberry-qemu/blob/master/linux-arm.patch
-git clone git://github.com/raspberrypi/linux.git --branch rpi-4.9.y --single-branch
+git clone git://github.com/raspberrypi/linux.git --branch rpi-4.9.y --single-branch --depth 1
 git clone git://github.com/raspberrypi/tools.git
 cd linux
 diff -ur ../linux-arm.patch ../linux-arm.patch > ../linux-arm.patch
@@ -37,7 +37,7 @@ CONFIG_VFP=y
 CONFIG_CGROUPS=y
 EOF
 
-make -j 8 -k ARCH=arm CROSS_COMPILE=${TOOLCHAIN}- menuconfig
-make -j 8 -k ARCH=arm CROSS_COMPILE=${TOOLCHAIN}-
+make -j 4 -k ARCH=arm CROSS_COMPILE=${TOOLCHAIN}- menuconfig
+make -j 4 -k ARCH=arm CROSS_COMPILE=${TOOLCHAIN}-
 cd ..
 cp linux/arch/arm/boot/zImage kernel-qemu
