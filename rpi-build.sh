@@ -9,6 +9,7 @@ cd linux
 diff -ur ../linux-arm.patch ../linux-arm.patch > ../linux-arm.patch
 patch -p1 < ../linux-arm.patch
 
+ # yum -y install bc libstdc++-4.8.5-16.el7.i686 libstdc++.so.6 zlib.i686 ncurses-libs ncurses-devel
 make ARCH=arm versatile_defconfig
 cat >> .config << EOF
 CONFIG_CROSS_COMPILE="$TOOLCHAIN"
