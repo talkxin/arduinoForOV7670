@@ -42,3 +42,22 @@ make -j 4 -k ARCH=arm CROSS_COMPILE=${TOOLCHAIN}- menuconfig
 make -j 4 -k ARCH=arm CROSS_COMPILE=${TOOLCHAIN}-
 cd ..
 cp linux/arch/arm/boot/zImage kernel-qemu
+
+
+
+# qemu-system-arm -kernel kernel-qemu -m 256 -M versatilepb -no-reboot -serial stdio -append "root=/dev/sda2 panic=1 rootfstype=ext4 rw init=/bin/bash" -hda 2017-11-29-raspbian-stretch.img
+#
+#
+#
+# qemu-system-arm -kernel kernel-qemu  -M versatilepb -cpu arm1176 -hda 2017-11-29-raspbian-stretch.img -m 256 -append "root=/dev/sda2"
+#
+#
+# qemu-system-arm -kernel kernel-qemu -cpu arm1176 -m 256 -M versatilepb -no-reboot -serial stdio -append "root=/dev/sda2 panic=1 rootfstype=ext4 rw" -hda 2017-11-29-raspbian-stretch.img
+#
+# 
+#
+# qemu-system-arm -drive format=raw,file=2016-11-25-raspbian-jessie.img -kernel kernel-qemu  -M versatilepb -cpu arm1176 -m 256 -append "root=/dev/sda2"
+#
+#
+# qemu-img resize -f raw 2016-11-25-raspbian-jessie.img +5G
+# qemu-system-arm -kernel kernel-qemu -cpu arm1176 -m 256 -M versatilepb -serial stdio -append "root=/dev/sda2 panic=1 rootfstype=ext4 rw" -drive "file=2016-11-25-raspbian-jessie.img,index=0,media=disk,format=raw" -redir tcp:2222::22
