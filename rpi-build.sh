@@ -62,3 +62,6 @@ cp linux/arch/arm/boot/zImage kernel-qemu
 # qemu-img resize -f raw 2016-11-25-raspbian-jessie.img +5G
 # qemu-system-arm -kernel kernel-qemu -cpu arm1176 -m 256 -M versatilepb -serial stdio -append "root=/dev/sda2 panic=1 rootfstype=ext4 rw" -drive "file=2016-11-25-raspbian-jessie.img,index=0,media=disk,format=raw" -redir tcp:2222::22
 # qemu-system-arm -kernel kernel-qemu -cpu arm1176 -m 256 -M versatilepb -serial stdio -append "console=ttyAMA0 root=/dev/mmcblk0p1 rootfstype=ext3" -drive "file=2017-11-29-raspbian-stretch.img,index=0,media=disk,format=raw" -redir tcp:2222::22
+
+
+# http://blog.csdn.net/xdw1985829/article/details/39077611
