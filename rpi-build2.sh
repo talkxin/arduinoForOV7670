@@ -60,3 +60,5 @@ EOF
 cat ./config_ip_tables >> .config
 make -j 4 -k ARCH=arm CROSS_COMPILE=${TOOLCHAIN}- menuconfig
 make -j 4 -k ARCH=arm CROSS_COMPILE=${TOOLCHAIN}-
+cp arch/arm/boot/zImage ../kernel-qemu
+cd ..
