@@ -8,7 +8,7 @@ sudo apt-get update
 sudo apt-get install git libncurses5-dev gcc-arm-linux-gnueabihf unzip
 
 
-if [ -f linux-${COMMIT}.zip ] ; then
+if [ ! -f linux-${COMMIT}.zip ] ; then
   wget -c https://github.com/raspberrypi/linux/archive/${COMMIT}.zip -O linux-${COMMIT}.zip
 fi
 
