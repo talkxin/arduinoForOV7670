@@ -4,10 +4,9 @@ if [ -f build-kernel-qemu.conf ] ; then
 	. build-kernel-qemu.conf
 fi
 
-if [ "$INSTALL_PACKAGES" ] ; then
-	sudo apt-get update
-	sudo apt-get install git libncurses5-dev gcc-arm-linux-gnueabihf
-fi
+sudo apt-get update
+sudo apt-get install git libncurses5-dev gcc-arm-linux-gnueabihf
+
 
 if [ -f linux-${COMMIT}.zip ] ; then
   wget -c https://github.com/raspberrypi/linux/archive/${COMMIT}.zip -O linux-${COMMIT}.zip
