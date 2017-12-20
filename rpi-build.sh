@@ -65,3 +65,4 @@ cp linux/arch/arm/boot/zImage kernel-qemu
 
 
 # http://blog.csdn.net/xdw1985829/article/details/39077611
+# http://osxdaily.com/2014/03/20/mount-ext-linux-file-system-mac/
