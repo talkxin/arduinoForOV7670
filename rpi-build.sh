@@ -1,4 +1,5 @@
-TOOLCHAIN=../tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian/bin/arm-linux-gnueabihf
+# TOOLCHAIN=/home/liuxin/buildard/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian/bin/arm-linux-gnueabihf
+TOOLCHAIN=/home/liuxin/buildard/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin/arm-linux-gnueabihf
 rm -rf kernel-qemu
 mkdir kernel-qemu
 cd kernel-qemu
@@ -38,8 +39,9 @@ CONFIG_VFP=y
 CONFIG_CGROUPS=y
 EOF
 
+TOOLCHAIN=/home/liuxin/buildard/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin/arm-linux-gnueabihf
 make -j 4 -k ARCH=arm CROSS_COMPILE=${TOOLCHAIN}- menuconfig
-make -j 4 -k ARCH=arm CROSS_COMPILE=${TOOLCHAIN}-
+make -j 4 -k ARCH=arm CROSS_COMPILE=${TOOLCHAIN}- zImage
 cd ..
 cp linux/arch/arm/boot/zImage kernel-qemu
 
@@ -66,3 +68,4 @@ cp linux/arch/arm/boot/zImage kernel-qemu
 
 # http://blog.csdn.net/xdw1985829/article/details/39077611
 # http://osxdaily.com/2014/03/20/mount-ext-linux-file-system-mac/
+# https://github.com/dhruvvyas90/qemu-rpi-kernel
